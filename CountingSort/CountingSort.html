@@ -1,64 +1,101 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-	<head>
-		<title>
-			Visualizacion de Counting Sort 
-		</title>
-		
-		<!-- css sheet for how the page is laid out -->
-		
-		<link rel="stylesheet" href="visualizationPageStyle.css">
-			
-			
-		<!-- jqueury stuff.  Only used for the animation speed slider. -->
-		<link rel="stylesheet" href="ThirdParty/jquery-ui-1.8.11.custom.css">
-				
-		<script src="ThirdParty/jquery-1.5.2.min.js"></script>
-		<script src="ThirdParty/jquery-ui-1.8.11.custom.min.js"></script>
-				
-		<!-- Javascript for the actual visualization code -->
-		<script type = "text/javascript" src = "Animaciones/CustomEvents.js"> </script>
-		<script type = "text/javascript" src = "Animaciones/UndoFunctions.js"> </script>
-		<script type = "text/javascript" src = "Animaciones/AnimatedObject.js"> </script>
-		<script type = "text/javascript" src = "Animaciones/AnimatedLabel.js"> </script>
-		<script type = "text/javascript" src = "Animaciones/AnimatedCircle.js"> </script>
-		<script type = "text/javascript" src = "Animaciones/AnimatedRectangle.js"> </script>
-		<script type = "text/javascript" src = "Animaciones/AnimatedLinkedList.js"> </script>
-		<script type = "text/javascript" src = "Animaciones/HighlightCircle.js"> </script>
-		<script type = "text/javascript" src = "Animaciones/Line.js"> </script>
-		<script type = "text/javascript" src = "Animaciones/ObjectManager.js"> </script>
-		<script type = "text/javascript" src = "Animaciones/AnimationMain.js"> </script>
-		<script type = "text/javascript" src = "Algoritmos/Algorithm.js"> </script>
-		<script type = "text/javascript" src = "Algoritmos/CountingSort.js"> </script> 
-				
-			
-	 </head> 
-	
-	<body onload="init();" class="VisualizationMainPage">
-		
-		<div id = "container">
-			
-			<div id="header">  
-				<h1>Algoritmo de Counting Sort</h1>
-			</div>
-			
-			<div = id = "mainContent"> 
-				
-				<div id = "algoControlSection">
-					<!-- Table for buttons to control specific animation (insert/find/etc) -->
-					<!-- (filled in by javascript code specific to the animtion) -->
-					<table id="AlgorithmSpecificControls"> </table> 
-				</div>
+<head>
+    <title>
+        Visualizacion de Counting Sort
+    </title>
 
-				<div id = "generalAnimationControlSection">
-					<table id="GeneralAnimationControls">  </table>		
-				</div>
-				<canvas id="canvas" width="1000" height="500"></canvas>
-				
+    <!-- css sheet for how the page is laid out -->
 
-				
-			</div> <!-- mainContent -->
+    <link rel="stylesheet" href="visualizationPageStyle.css">
 
-		</div><!-- container -->
-	</body>
+
+    <!-- jqueury stuff.  Only used for the animation speed slider. -->
+    <link rel="stylesheet" href="ThirdParty/jquery-ui-1.8.11.custom.css">
+
+    <script src="ThirdParty/jquery-1.5.2.min.js"></script>
+    <script src="ThirdParty/jquery-ui-1.8.11.custom.min.js"></script>
+
+    <!-- Javascript for the actual visualization code -->
+    <script type="text/javascript" src="AnimationLibrary/CustomEvents.js"></script>
+    <script type="text/javascript" src="AnimationLibrary/UndoFunctions.js"></script>
+    <script type="text/javascript" src="AnimationLibrary/AnimatedObject.js"></script>
+    <script type="text/javascript" src="AnimationLibrary/AnimatedLabel.js"></script>
+    <script type="text/javascript" src="AnimationLibrary/AnimatedCircle.js"></script>
+    <script type="text/javascript" src="AnimationLibrary/AnimatedRectangle.js"></script>
+    <script type="text/javascript" src="AnimationLibrary/AnimatedLinkedList.js"></script>
+    <script type="text/javascript" src="AnimationLibrary/HighlightCircle.js"></script>
+    <script type="text/javascript" src="AnimationLibrary/Line.js"></script>
+    <script type="text/javascript" src="AnimationLibrary/ObjectManager.js"></script>
+    <script type="text/javascript" src="AnimationLibrary/AnimationMain.js"></script>
+    <script type="text/javascript" src="AlgorithmLibrary/Algorithm.js"></script>
+    <script type="text/javascript" src="AlgorithmLibrary/CountingSort.js"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link href="css/estilos.css" rel="stylesheet" type="txt/css" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+
+<body onload="init();" class="VisualizationMainPage">
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+
+
+                <div id="header">
+                    <h3>Algoritmo de Counting Sort</h3>
+                </div>
+                <div = id="mainContent">
+
+                    <div id="algoControlSection">
+                        <!-- Table for buttons to control specific animation (insert/find/etc) -->
+                        <!-- (filled in by javascript code specific to the animtion) -->
+                        <table id="AlgorithmSpecificControls"> </table>
+                    </div>
+
+
+
+                    <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
+
+                    <div>
+                        <canvas id="canvas" width="1000" height="500" alt="Responsive image" class="img-fluid"></canvas>
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col-4">
+                <h3>Pseudocódigo</h3>
+                <img src="countigSort.jpg" class="img-fluid responsive-image">
+            </div>
+
+        </div>
+        <div id="footer">
+            <hr>
+            <p><a href="#">Algorithm Visualizations</a></p>
+
+
+
+            <div id="generalAnimationControlSection" class="img-fluid responsive-image" >
+                <!-- Table for buttons to control general animation (play/pause/undo/etc) ->
+                <!-- (filled in by javascript code, specifically AnimationMain.js)  -->
+
+                <table id="GeneralAnimationControls">  </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+
+</body>
 </html>
