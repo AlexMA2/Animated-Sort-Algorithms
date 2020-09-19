@@ -53,14 +53,10 @@ var canvas;
 
 var paused = false;
 var playPauseBackButton;
-var skipBackButton;
-var stepBackButton;
-var stepForwardButton;
-var skipForwardButton;
 
 var widthEntry;
 var heightEntry;
-var sizeButton;
+
 
 function returnSubmit(field, funct, maxsize, intOnly) {
   if (maxsize != undefined) {
@@ -106,32 +102,17 @@ function animWaiting() {
   objectManager.statusReport.setForegroundColor("#FF0000");
 }
 
-function animStarted() {
-  skipForwardButton.disabled = false;
-  skipBackButton.disabled = false;
-  stepForwardButton.disabled = true;
-  stepBackButton.disabled = true;
+function animStarted() {  
   objectManager.statusReport.setText("Animación en curso");
   objectManager.statusReport.setForegroundColor("#009900");
 }
 
-function animEnded() {
-  skipForwardButton.disabled = true;
-  stepForwardButton.disabled = true;
-  if (skipBackButton.disabled == false && paused) {
-    stepBackButton.disabled = false;
-  }
+function animEnded() {  
   objectManager.statusReport.setText("Animación Completada");
   objectManager.statusReport.setForegroundColor("#000000");
 }
 
-function anumUndoUnavailable() {
-  skipBackButton.disabled = true;
-  stepBackButton.disabled = true;
-}
-
-function timeout() {
-  
+function timeout() {  
   timer = setTimeout("timeout()", 30);
   animationManager.update();
   objectManager.draw();
@@ -156,11 +137,9 @@ function doPlayPause() {
   paused = !paused;
   if (paused) {
     playPauseBackButton.setAttribute("value", "Iniciar");
-    if (skipBackButton.disabled == false) {
-      stepBackButton.disabled = false;
-    }
+    
   } else {
-    playPauseBackButton.setAttribute("value", "Pausa");
+    playPauseBackButton.setAttribute("value", "Pausar");
   }
   animationManager.SetPaused(paused);
 }
@@ -205,18 +184,8 @@ function initCanvas() {
   objectManager = new ObjectManager();
   animationManager = new AnimationManager(objectManager);
 
-  skipBackButton = addControlToAnimationBar("Button", "Volver al comienzo");
-  skipBackButton.onclick = animationManager.skipBack.bind(animationManager);
-  stepBackButton = addControlToAnimationBar("Button", "Retroceder");
-  stepBackButton.onclick = animationManager.stepBack.bind(animationManager);
   playPauseBackButton = addControlToAnimationBar("Button", "Pausar");
   playPauseBackButton.onclick = doPlayPause;
-  stepForwardButton = addControlToAnimationBar("Button", "Avanzar");
-  stepForwardButton.onclick = animationManager.step.bind(animationManager);
-  skipForwardButton = addControlToAnimationBar("Button", "Ir al final");
-  skipForwardButton.onclick = animationManager.skipForward.bind(
-    animationManager
-  );
 
   var element = document.createElement("div");
   element.setAttribute("display", "inline-block");
@@ -292,43 +261,7 @@ function initCanvas() {
       document.getElementById("generalAnimationControlSection")
     );
   }
-
-  canvas.width = width;
-  canvas.height = height;
-
-  tableEntry = document.createElement("td");
-  txtNode = document.createTextNode(" w:");
-  tableEntry.appendChild(txtNode);
-  controlBar.appendChild(tableEntry);
-
-  widthEntry = addControlToAnimationBar("Text", canvas.width);
-  widthEntry.size = 4;
-  widthEntry.onkeydown = this.returnSubmit(
-    widthEntry,
-    animationManager.changeSize.bind(animationManager),
-    4,
-    true
-  );
-
-  tableEntry = document.createElement("td");
-  txtNode = document.createTextNode("       h:");
-  tableEntry.appendChild(txtNode);
-  controlBar.appendChild(tableEntry);
-
-  heightEntry = addControlToAnimationBar("Text", canvas.height);
-  heightEntry.onkeydown = this.returnSubmit(
-    heightEntry,
-    animationManager.changeSize.bind(animationManager),
-    4,
-    true
-  );
-
-  //	heightEntry.size = 4;
-  sizeButton = addControlToAnimationBar("Button", "Cambiar tamaño");
-
-  sizeButton.onclick = animationManager.changeSize.bind(animationManager);
-
-
+  
   animationManager.addListener("AnimationStarted", this, animStarted);
   animationManager.addListener("AnimationEnded", this, this.animEnded);
   animationManager.addListener("AnimationWaiting", this, this.animWaiting);
@@ -997,8 +930,7 @@ function AnimationManager(objectManager) {
     this.undoAnimationStepIndices = null;
     this.previousAnimationSteps = [];
     this.undoAnimationStepIndicesStack = [];
-    this.AnimationSteps = null;
-    this.fireEvent("AnimationUndoUnavailable", "NoData");
+    this.AnimationSteps = null;    
     clearTimeout(timer);
     this.animatedObjects.update();
     this.animatedObjects.draw();

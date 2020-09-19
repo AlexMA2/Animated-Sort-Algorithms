@@ -107,14 +107,11 @@ body {
   color: #006633;
 }
 
-canvas {
-  /*margin-top: 100px;*/
-}
-
 #footer {
   padding: 0 10px;
   background: #491d76;
   color: #ffcc33;
+  text-align: center;
 }
 #footer h3 {
   margin: 0;

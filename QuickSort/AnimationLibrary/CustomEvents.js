@@ -62,8 +62,7 @@ EventListener.prototype.addListener = function (kind, scope, func) {
   scopeFunctions.functions.push(func);
 };
 
-EventListener.prototype.fireEvent = function (kind, event) {
-  // TODO:  Should add a deep clone here ...
+EventListener.prototype.fireEvent = function (kind, event) {  
   if (this.events[kind] !== undefined) {
     for (var i = 0; i < this.events[kind].length; i++) {
       var objects = this.events[kind][i];
