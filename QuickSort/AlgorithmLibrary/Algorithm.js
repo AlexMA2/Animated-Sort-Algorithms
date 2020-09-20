@@ -58,10 +58,12 @@ function addRadioButtonGroupToAlgorithmBar(buttonNames, groupName) {
 }
 
 function addControlToAlgorithmBar(type, name) {
+
+
   var element = document.createElement("input");
 
   element.setAttribute("type", type);
-  element.setAttribute("value", name);  
+  element.setAttribute("value", name);
 
   var tableEntry = document.createElement("td");
 
@@ -71,9 +73,11 @@ function addControlToAlgorithmBar(type, name) {
 
   controlBar.appendChild(tableEntry);
   return element;
+
+
 }
 
-function Algorithm(am) {}
+function Algorithm(am) { }
 
 Algorithm.prototype.setCodeAlpha = function (code, newAlpha) {
   var i, j;
@@ -129,7 +133,7 @@ Algorithm.prototype.init = function (am, w, h) {
   this.commands = [];
 };
 
-Algorithm.prototype.sizeChanged = function (newWidth, newHeight) {};
+Algorithm.prototype.sizeChanged = function (newWidth, newHeight) { };
 
 Algorithm.prototype.implementAction = function (funct, val) {
   var nxt = [funct, val];
@@ -155,13 +159,9 @@ Algorithm.prototype.normalizeNumber = function (input, maxLen) {
   }
 };
 
-Algorithm.prototype.disableUI = function (event) {
-  
-};
+Algorithm.prototype.disableUI = function (event) { };
 
-Algorithm.prototype.enableUI = function (event) {
-  
-};
+Algorithm.prototype.enableUI = function (event) { };
 
 function controlKey(keyASCII) {
   return (
@@ -182,42 +182,30 @@ Algorithm.prototype.returnSubmitFloat = function (field, funct, maxsize) {
   return function (event) {
     var keyASCII = 0;
     if (window.event) {
-      
       keyASCII = event.keyCode;
     } else if (event.which) {
-     
       keyASCII = event.which;
     }
-    
+
     if (keyASCII == 13) {
       funct();
-    }
-    
-    else if (controlKey(keyASCII)) {
+    } else if (controlKey(keyASCII)) {
       return;
-    }
-    
-    else if (keyASCII == 109) {
+    } else if (keyASCII == 109) {
       return;
-    }
-    
-    else if (
+    } else if (
       (maxsize != undefined || field.value.length < maxsize) &&
       keyASCII >= 48 &&
       keyASCII <= 57
     ) {
       return;
-    }
-    
-    else if (
+    } else if (
       (maxsize != undefined || field.value.length < maxsize) &&
       keyASCII == 190 &&
       field.value.indexOf(".") == -1
     ) {
       return;
-    }
-   
-    else {
+    } else {
       return false;
     }
   };
@@ -230,10 +218,8 @@ Algorithm.prototype.returnSubmit = function (field, funct, maxsize, intOnly) {
   return function (event) {
     var keyASCII = 0;
     if (window.event) {
-      
       keyASCII = event.keyCode;
     } else if (event.which) {
-     
       keyASCII = event.which;
     }
 
@@ -259,16 +245,13 @@ Algorithm.prototype.addReturnSubmit = function (field, action) {
   field.onkeydown = this.returnSubmit(field, action, 4, false);
 };
 
-Algorithm.prototype.reset = function () {
-  
-};
+Algorithm.prototype.reset = function () { };
 
 Algorithm.prototype.undo = function (event) {
-  
   this.actionHistory.pop();
-  
+
   this.reset();
-  
+
   var len = this.actionHistory.length;
   this.recordAnimation = false;
   for (var i = 0; i < len; i++) {

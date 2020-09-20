@@ -52,17 +52,9 @@ ComparisonSort.prototype.addControls = function () {
   this.resetButton = addControlToAlgorithmBar("Button", "Array Aleatorio");
   this.resetButton.onclick = this.resetCallback.bind(this);
 
-  this.insertSortButton = addControlToAlgorithmBar("Button", "Counting Sort");
-  this.insertSortButton.onclick = this.insertSortCallback.bind(this);
-
-  this.selectSortButton = addControlToAlgorithmBar("Button", "Selection Sort");
-  this.selectSortButton.onclick = this.selectSortCallback.bind(this);
-
   this.quickSortButton = addControlToAlgorithmBar("Button", "Quick Sort");
   this.quickSortButton.onclick = this.quickSortCallback.bind(this);
 
-  this.sizeButton = addControlToAlgorithmBar("Button", "Cambiar Tamaño");
-  this.sizeButton.onclick = this.changeSizeCallback.bind(this);
 };
 
 ComparisonSort.prototype.setArraySize = function (small) {
@@ -594,18 +586,14 @@ ComparisonSort.prototype.insertionSortSkip = function (inc, offset) {
 };
 
 ComparisonSort.prototype.disableUI = function (event) {
-  this.resetButton.disabled = true;
-  this.insertSortButton.disabled = true;
-  this.selectSortButton.disabled = true;  
+  this.resetButton.disabled = true;    
   this.quickSortButton.disabled = true; 
-  this.sizeButton.disabled = true;
+  
 };
 ComparisonSort.prototype.enableUI = function (event) {
-  this.resetButton.disabled = false;
-  this.insertSortButton.disabled = false;
-  this.selectSortButton.disabled = false;  
+  this.resetButton.disabled = false;   
   this.quickSortButton.disabled = false; 
-  this.sizeButton.disabled = false;
+  
 };
 
 var currentAlg;
