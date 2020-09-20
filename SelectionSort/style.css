@@ -1,0 +1,100 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.logo {
+  width: 140px;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  padding: 25px 0px 25px 0px;
+}
+
+header {
+  background-color: #c8ebfa;
+}
+.titulo {
+  text-align: center;
+  background-color: #491d76;
+  padding: 25px;
+  color: #ffcc33;
+}
+
+.arreglo-principal {
+  display: table;
+  overflow: hidden;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.bajo-arreglo {
+  display: table;
+  overflow: hidden;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.invisible {
+  display: table-cell;
+  vertical-align: middle;
+  background: white;
+  width: 30px;
+  height: 45px;
+  max-width: 30px;
+  text-align: center;
+}
+
+.controles {
+  text-align: center;
+}
+
+.controles button {
+  width: 125px;
+  height: 50px;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.controles button:hover {
+  background-color: aqua;
+  color: #000000;
+}
+
+.explicacion {
+  text-align: center;
+  margin-top: 1em;
+  font-size: 25px;
+}
+
+footer {
+  background-color: #c785c8;
+  text-align: center;
+  padding: 25px 25px;
+  margin-top: 185px;
+}
+
+footer h1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+}
+
+footer ul li {
+  font-size: 20px;
+  color: #1b1d20;
+  list-style: none;
+}
+
+.codigo {
+  display: flex;
+  position: relative;
+  left: 785px;
+  top: 25px;
+  border: 1px solid #000;
+}
+
+#Entrar {
+    width: 250px;
+}
