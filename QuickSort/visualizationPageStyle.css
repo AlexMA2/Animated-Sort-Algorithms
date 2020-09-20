@@ -35,6 +35,24 @@ body {
   align-items: center;
 }
 
+#AlgorithmSpecificControls{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.codigo{
+  position: absolute;
+  border: 1px solid #000;
+  top: 323px;
+  right: 50px;
+}
+
+#AlgorithmSpecificControls td input:hover{
+  background-color: #FFF76D;
+  cursor: pointer;
+}
+
 #AlgorithmSpecificControls td input {
   width: 150px;
   height: 30px;
@@ -52,8 +70,10 @@ body {
   justify-content: center;
   align-items: center;
   height: 75px;
-  /*margin-top: 107px;*/
+  margin-top: 100px;
 }
+
+
 
 #header {
   background: #491d76;
