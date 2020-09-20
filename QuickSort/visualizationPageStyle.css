@@ -63,6 +63,15 @@ body {
   font-weight: bold;
 }
 
+#GeneralAnimationControls{
+  display: flex;
+}
+
+#Entrar{
+  width: 150px;
+  font-weight: bolder;
+}
+
 #generalAnimationControlSection {
   background: #018989;
   color: #fdb325;

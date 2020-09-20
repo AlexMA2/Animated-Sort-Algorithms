@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="ThirdParty/jquery-ui-1.8.11.custom.css">
 	<script src="ThirdParty/jquery-1.5.2.min.js"></script>
 	<script src="ThirdParty/jquery-ui-1.8.11.custom.min.js"></script>
-
+	<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css" />
 	<script type="text/javascript" src="AnimationLibrary/CustomEvents.js"> </script>
 	<script type="text/javascript" src="AnimationLibrary/UndoFunctions.js"> </script>
 	<script type="text/javascript" src="AnimationLibrary/AnimatedObject.js"> </script>
@@ -64,7 +64,15 @@
 
 			<div id="generalAnimationControlSection">
 
-				<table id="GeneralAnimationControls"> </table>
+				<table id="GeneralAnimationControls">
+					<td>
+						<button id="Entrar" onclick="pantallaCompleta(document.documentElement)" type="button"
+							name="button">
+							<i class="fa fa-expand" aria-hidden="true"></i> Pantalla Completa
+						</button>
+					</td>
+				</table>
+
 			</div>
 
 		</div>
@@ -77,6 +85,46 @@
 		</div>
 
 	</div>
+	<script>
+        var completa = 0;
+        function pantallaCompleta(element) {
+            if (completa === 0) {
+                if (element.requestFullScreen) {
+                    element.requestFullScreen();
+                    completa = 1;
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                    completa = 1;
+                } else if (element.webkitRequestFullScreen) {
+                    element.webkitRequestFullScreen();
+                    completa = 1;
+                }
+                if (completa === 1) {
+                    $("#header").css("display", "none");
+                    $("#footer").css("display", "none");
+                    $("#panel-animacion").css("margin-top", "300px");
+                }
+            }
+            else {
+                if (document.cancelFullScreen) {
+                    document.cancelFullScreen();
+                    completa = 0;
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                    completa = 0;
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                    completa = 0;
+                }
+                if (completa === 0) {
+                    $("#header").css("display", "block");
+                    $("#footer").css("display", "block");
+                    $("#panel-animacion").css("margin-top", "0px");
+                }
+            }
+        }
+
+    </script>
 </body>
 
 </html>
