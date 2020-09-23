@@ -35,6 +35,24 @@ body {
   align-items: center;
 }
 
+#AlgorithmSpecificControls{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.codigo{
+  position: absolute;
+  border: 1px solid #000;
+  top: 323px;
+  right: 50px;
+}
+
+#AlgorithmSpecificControls td input:hover{
+  background-color: #FFF76D;
+  cursor: pointer;
+}
+
 #AlgorithmSpecificControls td input {
   width: 150px;
   height: 30px;
@@ -45,6 +63,15 @@ body {
   font-weight: bold;
 }
 
+#GeneralAnimationControls{
+  display: flex;
+}
+
+#Entrar{
+  width: 150px;
+  font-weight: bolder;
+}
+
 #generalAnimationControlSection {
   background: #018989;
   color: #fdb325;
@@ -52,8 +79,10 @@ body {
   justify-content: center;
   align-items: center;
   height: 75px;
-  /*margin-top: 107px;*/
+  margin-top: 100px;
 }
+
+
 
 #header {
   background: #491d76;
@@ -74,7 +103,7 @@ body {
 }
 
 #container {
-  background: #ffffff;
+  background: #C8EBFA;
   margin: 0 auto;
   text-align: center;
 }
@@ -107,14 +136,11 @@ body {
   color: #006633;
 }
 
-canvas {
-  /*margin-top: 100px;*/
-}
-
 #footer {
   padding: 0 10px;
   background: #491d76;
   color: #ffcc33;
+  text-align: center;
 }
 #footer h3 {
   margin: 0;
