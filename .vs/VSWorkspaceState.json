@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\QuickSort"
+    "\\Index",
+    "\\Index\\assets",
+    "\\Index\\assets\\css",
+    "\\SelectionSort"
   ],
-  "SelectedNode": "\\QuickSort\\visualizationPageStyle.css",
+  "SelectedNode": "\\Index\\assets\\css\\bootstrap.min.css",
   "PreviewInSolutionExplorer": false
 }
