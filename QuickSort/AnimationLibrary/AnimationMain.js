@@ -107,6 +107,7 @@ var tiempoTerminado;
 
 function animStarted() {  
   tiempoComienzo = new Date();
+  console.log(tiempoComienzo);
   objectManager.statusReport.setText("Animación en curso");
   objectManager.statusReport.setForegroundColor("#009900");
 }

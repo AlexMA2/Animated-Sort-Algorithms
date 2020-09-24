@@ -99,21 +99,23 @@ function animWaiting() {
   objectManager.statusReport.setForegroundColor("#FF0000");
 }
 
-var iniciaEN;
+var iniciaEn;
 var terminaEn;
 
 function animStarted() {  
   iniciaEn = new Date();
+  
   objectManager.statusReport.setText("Animación en curso");
   objectManager.statusReport.setForegroundColor("#009900");
 }
 
 function animEnded() {  
   terminaEn = new Date();
-  var duracion = (terminaEn - iniciaEN)/1000;
-  objectManager.statusReport.setText("Animación Completada. Duracion: " + duracion);
+  
+  var duracion = (terminaEn - iniciaEn)/1000;
+  objectManager.statusReport.setText("Animación Completada.");
   objectManager.statusReport.setForegroundColor("#000000");
-
+  document.getElementById("tiempo").innerHTML += "</br> Tiempo de animación" + duracion + " segundos";
 }
 
 function timeout() {  

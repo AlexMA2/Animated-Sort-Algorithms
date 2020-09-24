@@ -46,7 +46,7 @@ CountingSort.prototype.sizeChanged = function (newWidth, newHeight) {
 
 
 CountingSort.prototype.addControls = function () {
-	this.resetButton = addControlToAlgorithmBar("Button", "Randomize List");
+	this.resetButton = addControlToAlgorithmBar("Button", "Array aleatoria");
 	this.resetButton.onclick = this.resetCallback.bind(this);
 
 	this.countingsSortButton = addControlToAlgorithmBar("Button", "Counting Sort");
@@ -104,20 +104,25 @@ CountingSort.prototype.setup = function () {
 	this.animationManager.StartNewAnimation(this.commands);
 	this.animationManager.skipForward();
 	this.animationManager.clearHistory();
+	var nuevoArray = new Array(this.arrayData.length);
+	for(var i= 0; i< this.arrayData.length; i++){
+		console.log("Indice: " + i + " = " + this.arrayData[i]);
+		nuevoArray[i] = this.arrayData[i];
+	}
 	var startTime = new Date();	
-	algoritmoCountingSort(this.arrayData);	
+	algoritmoCountingSort(nuevoArray);	
 	var finishTime = new Date();
 	console.log("Tiempo de ejecucion: " + (finishTime - startTime) + " ms ");
+	document.getElementById("tiempo").innerHTML = "Tiempo de ejecucion: " + (finishTime - startTime) + " ms ";
 	
 }
 
 //ACA ESTA EL ERROR
 
-function algoritmoCountingSort(arreglo) {
-	var A = new Array(ARRAY_SIZE);
-	A = arreglo;
-	var n = ARRAY_SIZE;
-	var salida = new Array(n);
+function algoritmoCountingSort(A) {
+	console.log(A);	
+	var n = A.length;
+	var salida = new Array(n)
 	var contador = new Array(n + 1);
 	for (var i = 0; i < n + 1; i++) {
 		contador[i] = 0;

@@ -59,9 +59,16 @@ var tiempoFinal;
 function step1() {
   if (haIniciado === 0) {
     tiempoInicio = new Date();
-    selectionSort();
+    var nuevoArray = new Array(listValues.length);
+    for(var i= 0; i< listValues.length; i++){
+      nuevoArray[i] = listValues[i];
+    }
+
+    selectionSort(nuevoArray);
+    
     tiempoFinal = new Date();   
     console.log(tiempoFinal - tiempoInicio);
+    document.getElementById("velocidad").innerHTML = "</br>Tiempo de ejecución: " + (tiempoFinal - tiempoInicio) + " ms";
     tiempoInicio = new Date();
     haIniciado = 1;
   }
@@ -71,8 +78,7 @@ function step1() {
     tiempoFinal = new Date();
     var tiempoTotal = (tiempoFinal - tiempoInicio) / 1000;
     document.getElementById("remark").innerHTML = "La lista esta ordenada. Pulsa Reiniciar para ver la animación otravez. </br> Tiempo de la animacion: " + tiempoTotal + " seg </br>";
-     
-    document.getElementById("remark").innerHTML += " Tiempo del ordenamiento: " + (tiempoFinal - tiempoInicio) + "ms";
+    
     colorSorted(SIZE);
     return;
   }
@@ -87,18 +93,18 @@ function step1() {
   }
 }
 
-function selectionSort(){  
+function selectionSort(arreglo){  
   for(var i = 0; i < SIZE - 1; i++){
     var menor = i;
     for(var j = i + 1; j < SIZE; j++){
-      if(listValues[j] < listValues[menor]){
+      if(arreglo[j] < arreglo[menor]){
         menor = j;
       }
     }
 
-    var temp = listValues[menor];
-    listValues[menor] = listValues[i];
-    listValues[i] = temp;
+    var temp = arreglo[menor];
+    arreglo[menor] = arreglo[i];
+    arreglo[i] = temp;
   }  
 }
 
@@ -161,6 +167,7 @@ function setCurrentPosition() {
 }
 
 function setMinPosition() {
+  console.log("gdsg" + minPosition);
   posLoc = getElementPos(document.getElementById("list" + minPosition));
   document.getElementById("highlight").style.top = posLoc.y - 6 + "px";
   document.getElementById("highlight").style.left = posLoc.x + "px";

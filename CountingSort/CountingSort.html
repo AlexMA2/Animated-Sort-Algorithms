@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        Visualizacion de Counting Sort
+        Counting Sort Animación
     </title>
 
     <!-- css sheet for how the page is laid out -->
@@ -60,19 +60,23 @@
             <div id="mainContent">
 
                 <div id="algoControlSection">
-                    <!-- Table for buttons to control specific animation (insert/find/etc) -->
-                    <!-- (filled in by javascript code specific to the animtion) -->
-                    <table id="AlgorithmSpecificControls"> </table>
+                    
+                    <table id="AlgorithmSpecificControls">
+                        <td>
+                            <input type="Button" value="QuickSort"
+                                onclick="location.href = '../QuickSort/ComparisonSort.html'">
+                        </td>  
+                        <td>
+                            <input type="Button" value="SelectionSort"
+                                onclick="location.href = '../SelectionSort/SelectionSort.html'">
+                        </td>   
+                    </table>
                 </div>
-
-
-
-                <!-- Drawing canvas where all animation is done.  Note:  can be resized in code -->
 
                 <div>
                     <canvas id="canvas" width="1000" height="500" alt="Responsive image" class="img-fluid"></canvas>
                 </div>
-
+                <span id="tiempo" class="tiempoClase"> </span>
 
 
             </div>

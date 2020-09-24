@@ -82,7 +82,12 @@ body {
   margin-top: 100px;
 }
 
-
+.tiempoClase{
+  font-size: 15px;
+  color: #000;
+  text-align: center;
+  margin-left: 50px;
+}
 
 #header {
   background: #491d76;
