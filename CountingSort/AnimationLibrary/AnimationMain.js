@@ -115,7 +115,7 @@ function animEnded() {
   var duracion = (terminaEn - iniciaEn)/1000;
   objectManager.statusReport.setText("Animación Completada.");
   objectManager.statusReport.setForegroundColor("#000000");
-  document.getElementById("tiempo").innerHTML += "</br> Tiempo de animación" + duracion + " segundos";
+  document.getElementById("tiempo").innerHTML += "</br> Tiempo de animación: " + duracion + " segundos";
 }
 
 function timeout() {  
