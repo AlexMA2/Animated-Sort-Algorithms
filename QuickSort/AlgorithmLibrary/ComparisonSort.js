@@ -2,7 +2,12 @@ function ComparisonSort(am, w, h) {
   this.init(am, w, h);
 }
 
-var ARRAY_SIZE_SMALL = 50;
+var ARRAY_SIZE_SMALL = 0;
+while(ARRAY_SIZE_SMALL < 2 ){
+  ARRAY_SIZE_SMALL = prompt("Introduce el tamaño del arreglo", 2);
+}
+
+
 var ARRAY_WIDTH_SMALL = 17;
 var ARRAY_BAR_WIDTH_SMALL = 10;
 var ARRAY_INITIAL_X_SMALL = 15;
@@ -15,7 +20,7 @@ var LOWER_ARRAY_LABEL_Y_POS = 510;
 
 var SCALE_FACTOR = 2.0;
 
-var ARRAY_SIZE_LARGE = 500;
+var ARRAY_SIZE_LARGE = ARRAY_SIZE_SMALL;
 var ARRAY_WIDTH_LARGE = 4;
 var ARRAY_BAR_WIDTH_LARGE = 2;
 var ARRAY_INITIAL_X_LARGE = 15;
@@ -41,12 +46,44 @@ ComparisonSort.prototype.init = function (am, w, h) {
 
   this.setArraySize(true);
   this.arrayData = new Array(ARRAY_SIZE_LARGE);
+  
   this.arraySwap = new Array(ARRAY_SIZE_LARGE);
   this.labelsSwap = new Array(ARRAY_SIZE_LARGE);
   this.objectsSwap = new Array(ARRAY_SIZE_LARGE);
 
   this.createVisualObjects();
 };
+
+function algoritmoQuickSort(A, izq, der){  
+  var pivote = A[izq];
+  var i = izq;
+  var j = der;
+  while(i < j){
+    while(A[i] <= pivote && i < j){
+      i++;
+    }
+    while(A[j] > pivote){
+      j--;
+    }
+    if(i < j){
+      var aux = A[i];
+      A[i] = A[j];
+      A[j] = aux;
+    }
+
+  }
+  A[izq] = A[j];
+  A[j] = pivote;
+
+  if(izq < j - 1){    
+    algoritmoQuickSort(A, izq, j - 1);
+  }
+  if(j + 1 < der){    
+    algoritmoQuickSort(A, j + 1, der);
+  }
+
+}
+
 
 ComparisonSort.prototype.addControls = function () {
   this.resetButton = addControlToAlgorithmBar("Button", "Array Aleatorio");
@@ -99,6 +136,10 @@ ComparisonSort.prototype.randomizeArray = function () {
   this.animationManager.StartNewAnimation(this.commands);
   this.animationManager.skipForward();
   this.animationManager.clearHistory();
+  var startTime = new Date();
+  algoritmoQuickSort(this.arrayData, 0, this.arrayData.length - 1);
+  var finishTime = new Date();
+  console.log(finishTime - startTime);
 };
 
 ComparisonSort.prototype.swap = function (index1, index2) {

@@ -22,7 +22,6 @@ function reset() {
   setRandomValue();
   resetColor();
   document.getElementById("remark").innerHTML = "Lista llenada aleatoriamente";
-  document.getElementById("value").disabled = false;
 
   for (var j = 0; j < SIZE; j++) {
     id = "check" + j;
@@ -53,13 +52,27 @@ var k = 0;
 var current = 0;
 var isFindFirst = true;
 
+var haIniciado = 0;
+var tiempoInicio;
+var tiempoFinal;
+
 function step1() {
+  if (haIniciado === 0) {
+    tiempoInicio = new Date();
+    selectionSort();
+    tiempoFinal = new Date();   
+    console.log(tiempoFinal - tiempoInicio);
+    tiempoInicio = new Date();
+    haIniciado = 1;
+  }
   if (current > SIZE - 2) {
     document.getElementById("highlight").style.visibility = "hidden";
     document.getElementById("currentFly").style.visibility = "hidden";
-    document.getElementById("remark").innerHTML =
-      "La lista esta ordenada. Pulsa Reiniciar para ver la animación otravez";
-    //              current++;
+    tiempoFinal = new Date();
+    var tiempoTotal = (tiempoFinal - tiempoInicio) / 1000;
+    document.getElementById("remark").innerHTML = "La lista esta ordenada. Pulsa Reiniciar para ver la animación otravez. </br> Tiempo de la animacion: " + tiempoTotal + " seg </br>";
+     
+    document.getElementById("remark").innerHTML += " Tiempo del ordenamiento: " + (tiempoFinal - tiempoInicio) + "ms";
     colorSorted(SIZE);
     return;
   }
@@ -72,6 +85,21 @@ function step1() {
     isFindFirst = true;
     current++;
   }
+}
+
+function selectionSort(){  
+  for(var i = 0; i < SIZE - 1; i++){
+    var menor = i;
+    for(var j = i + 1; j < SIZE; j++){
+      if(listValues[j] < listValues[menor]){
+        menor = j;
+      }
+    }
+
+    var temp = listValues[menor];
+    listValues[menor] = listValues[i];
+    listValues[i] = temp;
+  }  
 }
 
 function colorSorted(size) {
@@ -203,7 +231,4 @@ function swap() {
       }
     );
   }
-
-  
-
 }

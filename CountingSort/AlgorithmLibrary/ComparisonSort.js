@@ -2,7 +2,11 @@ function ComparisonSort(am, w, h) {
   this.init(am, w, h);
 }
 
-var ARRAY_SIZE_SMALL = 50;
+var ARRAY_SIZE_SMALL = 0;
+while (ARRAY_SIZE_SMALL < 2) {
+  ARRAY_SIZE_SMALL = prompt("Introduce el tamaño del arreglo", 2);
+}
+
 var ARRAY_WIDTH_SMALL = 17;
 var ARRAY_BAR_WIDTH_SMALL = 10;
 var ARRAY_INITIAL_X_SMALL = 15;
@@ -15,7 +19,7 @@ var LOWER_ARRAY_LABEL_Y_POS = 510;
 
 var SCALE_FACTOR = 2.0;
 
-var ARRAY_SIZE_LARGE = 500;
+var ARRAY_SIZE_LARGE = ARRAY_SIZE_SMALL;
 var ARRAY_WIDTH_LARGE = 4;
 var ARRAY_BAR_WIDTH_LARGE = 2;
 var ARRAY_INITIAL_X_LARGE = 15;
@@ -47,6 +51,7 @@ ComparisonSort.prototype.init = function (am, w, h) {
 
   this.createVisualObjects();
 };
+
 
 ComparisonSort.prototype.addControls = function () {
   this.resetButton = addControlToAlgorithmBar("Button", "Array Aleatorio");
@@ -96,9 +101,10 @@ ComparisonSort.prototype.randomizeArray = function () {
     }
     this.cmd("SetHeight", this.barObjects[i], this.arrayData[i] * SCALE_FACTOR);
   }
+
   this.animationManager.StartNewAnimation(this.commands);
   this.animationManager.skipForward();
-  this.animationManager.clearHistory();
+  this.animationManager.clearHistory();  
 };
 
 ComparisonSort.prototype.swap = function (index1, index2) {
@@ -586,14 +592,14 @@ ComparisonSort.prototype.insertionSortSkip = function (inc, offset) {
 };
 
 ComparisonSort.prototype.disableUI = function (event) {
-  this.resetButton.disabled = true;    
-  this.quickSortButton.disabled = true; 
-  
+  this.resetButton.disabled = true;
+  this.quickSortButton.disabled = true;
+
 };
 ComparisonSort.prototype.enableUI = function (event) {
-  this.resetButton.disabled = false;   
-  this.quickSortButton.disabled = false; 
-  
+  this.resetButton.disabled = false;
+  this.quickSortButton.disabled = false;
+
 };
 
 var currentAlg;

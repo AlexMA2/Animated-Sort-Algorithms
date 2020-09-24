@@ -94,22 +94,26 @@ function returnSubmit(field, funct, maxsize, intOnly) {
 }
 
 function animWaiting() {
-  stepForwardButton.disabled = false;
-  if (skipBackButton.disabled == false) {
-    stepBackButton.disabled = false;
-  }
+  
   objectManager.statusReport.setText("Animation Pausada");
   objectManager.statusReport.setForegroundColor("#FF0000");
 }
 
+var iniciaEN;
+var terminaEn;
+
 function animStarted() {  
+  iniciaEn = new Date();
   objectManager.statusReport.setText("Animación en curso");
   objectManager.statusReport.setForegroundColor("#009900");
 }
 
 function animEnded() {  
-  objectManager.statusReport.setText("Animación Completada");
+  terminaEn = new Date();
+  var duracion = (terminaEn - iniciaEN)/1000;
+  objectManager.statusReport.setText("Animación Completada. Duracion: " + duracion);
   objectManager.statusReport.setForegroundColor("#000000");
+
 }
 
 function timeout() {  
@@ -380,8 +384,9 @@ function AnimationManager(objectManager) {
     var foundBreak = false;
     var anyAnimations = false;
 
-    while (this.currentAnimation < this.AnimationSteps.length && !foundBreak) {
+    while (this.currentAnimation < this.AnimationSteps.length && !foundBreak) {      
       var nextCommand = this.AnimationSteps[this.currentAnimation].split("<;>");
+      
       if (nextCommand[0].toUpperCase() == "CREATECIRCLE") {
         this.animatedObjects.addCircleObject(
           parseInt(nextCommand[1]),

@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-$(function () {
+
+/*$(function () {
   $("#gettersetter").draggable();
 });
 
@@ -38,7 +34,7 @@ $(function () {
 $(function () {
   $("#highlight").draggable();
 });
-
+*/
 function pad(number, size) {
   if (number < 10) {
     return number + space(size - 1);
