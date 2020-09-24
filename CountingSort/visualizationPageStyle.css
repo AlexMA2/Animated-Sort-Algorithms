@@ -6,6 +6,7 @@ body {
   padding: 0;
   text-align: center;
   color: #000000;
+  overflow-x: hidden;
 }
 
 .logo {
@@ -24,6 +25,11 @@ body {
 #container {
   background: #ffffff;
   text-align: center;
+}
+
+#imagen-codigo{
+  padding: 0px !important;
+  width: 500px !important;
 }
 
 #algoControlSection {
