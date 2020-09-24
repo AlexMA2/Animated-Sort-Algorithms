@@ -22,7 +22,6 @@ function reset() {
   setRandomValue();
   resetColor();
   document.getElementById("remark").innerHTML = "Lista llenada aleatoriamente";
-  document.getElementById("value").disabled = false;
 
   for (var j = 0; j < SIZE; j++) {
     id = "check" + j;
@@ -53,13 +52,33 @@ var k = 0;
 var current = 0;
 var isFindFirst = true;
 
+var haIniciado = 0;
+var tiempoInicio;
+var tiempoFinal;
+
 function step1() {
+  if (haIniciado === 0) {
+    tiempoInicio = new Date();
+    var nuevoArray = new Array(listValues.length);
+    for(var i= 0; i< listValues.length; i++){
+      nuevoArray[i] = listValues[i];
+    }
+
+    selectionSort(nuevoArray);
+    
+    tiempoFinal = new Date();   
+    console.log(tiempoFinal - tiempoInicio);
+    document.getElementById("velocidad").innerHTML = "</br>Tiempo de ejecución: " + (tiempoFinal - tiempoInicio) + " ms";
+    tiempoInicio = new Date();
+    haIniciado = 1;
+  }
   if (current > SIZE - 2) {
     document.getElementById("highlight").style.visibility = "hidden";
     document.getElementById("currentFly").style.visibility = "hidden";
-    document.getElementById("remark").innerHTML =
-      "La lista esta ordenada. Pulsa Reiniciar para ver la animación otravez";
-    //              current++;
+    tiempoFinal = new Date();
+    var tiempoTotal = (tiempoFinal - tiempoInicio) / 1000;
+    document.getElementById("remark").innerHTML = "La lista esta ordenada. Pulsa Reiniciar para ver la animación otravez. </br> Tiempo de la animacion: " + tiempoTotal + " seg </br>";
+    
     colorSorted(SIZE);
     return;
   }
@@ -72,6 +91,21 @@ function step1() {
     isFindFirst = true;
     current++;
   }
+}
+
+function selectionSort(arreglo){  
+  for(var i = 0; i < SIZE - 1; i++){
+    var menor = i;
+    for(var j = i + 1; j < SIZE; j++){
+      if(arreglo[j] < arreglo[menor]){
+        menor = j;
+      }
+    }
+
+    var temp = arreglo[menor];
+    arreglo[menor] = arreglo[i];
+    arreglo[i] = temp;
+  }  
 }
 
 function colorSorted(size) {
@@ -133,6 +167,7 @@ function setCurrentPosition() {
 }
 
 function setMinPosition() {
+  console.log("gdsg" + minPosition);
   posLoc = getElementPos(document.getElementById("list" + minPosition));
   document.getElementById("highlight").style.top = posLoc.y - 6 + "px";
   document.getElementById("highlight").style.left = posLoc.x + "px";
@@ -203,7 +238,4 @@ function swap() {
       }
     );
   }
-
-  
-
 }

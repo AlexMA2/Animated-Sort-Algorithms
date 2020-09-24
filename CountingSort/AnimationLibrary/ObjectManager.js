@@ -434,8 +434,9 @@ function ObjectManager() {
 
   this.getText = function (nodeID, index) {
     if (this.Nodes[nodeID] == null || this.Nodes[nodeID] == undefined) {
-      throw "getting text of an object that does not exit";
+      throw "Mal";
     }
+    
     return this.Nodes[nodeID].getText(index);
   };
 
