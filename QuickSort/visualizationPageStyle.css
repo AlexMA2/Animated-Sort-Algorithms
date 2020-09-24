@@ -41,6 +41,15 @@ body {
   
 }
 
+.textoClase{
+  font-size: 15px;
+  color: #000000;
+  text-align: center;
+  position: absolute;
+  top: 700px;
+  left: 30px;
+}
+
 .codigo{
   position: absolute;
   border: 1px solid #000;

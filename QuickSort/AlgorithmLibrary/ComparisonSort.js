@@ -136,10 +136,19 @@ ComparisonSort.prototype.randomizeArray = function () {
   this.animationManager.StartNewAnimation(this.commands);
   this.animationManager.skipForward();
   this.animationManager.clearHistory();
+  
+  var nuevoArray = new Array(this.arrayData.length);
+  
+  for(var i=0; i < this.arrayData.length; i++){
+    nuevoArray[i] = this.arrayData[i];   
+  
+  }
   var startTime = new Date();
-  algoritmoQuickSort(this.arrayData, 0, this.arrayData.length - 1);
+  algoritmoQuickSort(nuevoArray, 0, nuevoArray.length - 1);
   var finishTime = new Date();
-  console.log(finishTime - startTime);
+  var totalTime = (finishTime - startTime);
+  
+  document.getElementById("texto").innerHTML += " </br>Tiempo de ejecución: " + totalTime + " ms.";
 };
 
 ComparisonSort.prototype.swap = function (index1, index2) {

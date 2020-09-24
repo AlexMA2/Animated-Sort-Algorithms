@@ -67,7 +67,7 @@ function step1() {
     selectionSort(nuevoArray);
     
     tiempoFinal = new Date();   
-    console.log(tiempoFinal - tiempoInicio);
+    
     document.getElementById("velocidad").innerHTML = "</br>Tiempo de ejecución: " + (tiempoFinal - tiempoInicio) + " ms";
     tiempoInicio = new Date();
     haIniciado = 1;
@@ -167,7 +167,7 @@ function setCurrentPosition() {
 }
 
 function setMinPosition() {
-  console.log("gdsg" + minPosition);
+
   posLoc = getElementPos(document.getElementById("list" + minPosition));
   document.getElementById("highlight").style.top = posLoc.y - 6 + "px";
   document.getElementById("highlight").style.left = posLoc.x + "px";

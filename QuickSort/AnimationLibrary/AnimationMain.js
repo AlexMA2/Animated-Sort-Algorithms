@@ -107,7 +107,7 @@ var tiempoTerminado;
 
 function animStarted() {  
   tiempoComienzo = new Date();
-  console.log(tiempoComienzo);
+  
   objectManager.statusReport.setText("Animación en curso");
   objectManager.statusReport.setForegroundColor("#009900");
 }
@@ -115,8 +115,10 @@ function animStarted() {
 function animEnded() {  
   tiempoTerminado = new Date();
   duracion = (tiempoTerminado - tiempoComienzo)/1000;
-  objectManager.statusReport.setText("Animación Completada. Duracion: " + duracion + " segundos.");
+  objectManager.statusReport.setText("Animación Completada.");
   objectManager.statusReport.setForegroundColor("#000000");
+  
+  document.getElementById("texto").innerHTML = "</br> Tiempo de animación: " + duracion + " segundos.";
   
 }
 

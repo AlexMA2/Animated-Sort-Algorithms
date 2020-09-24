@@ -106,13 +106,13 @@ CountingSort.prototype.setup = function () {
 	this.animationManager.clearHistory();
 	var nuevoArray = new Array(this.arrayData.length);
 	for(var i= 0; i< this.arrayData.length; i++){
-		console.log("Indice: " + i + " = " + this.arrayData[i]);
+		
 		nuevoArray[i] = this.arrayData[i];
 	}
 	var startTime = new Date();	
 	algoritmoCountingSort(nuevoArray);	
 	var finishTime = new Date();
-	console.log("Tiempo de ejecucion: " + (finishTime - startTime) + " ms ");
+	
 	document.getElementById("tiempo").innerHTML = "Tiempo de ejecucion: " + (finishTime - startTime) + " ms ";
 	
 }
@@ -120,7 +120,7 @@ CountingSort.prototype.setup = function () {
 //ACA ESTA EL ERROR
 
 function algoritmoCountingSort(A) {
-	console.log(A);	
+	
 	var n = A.length;
 	var salida = new Array(n)
 	var contador = new Array(n + 1);
