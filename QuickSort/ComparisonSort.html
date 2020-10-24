@@ -54,7 +54,7 @@
 
 			<canvas id="canvas" width="1800" height="320"></canvas>
 			<span id="texto" class="textoClase"></span>
-			<div class="codigo" id="elcodigo">
+			<div class="codigo">
 				<img src="codigo.png" alt="codigo">
 			</div>
 
@@ -76,7 +76,6 @@
 		</div>
 
 		<div id="footer">
-			<h3> Desarrolladores </h3>
 			<h3> Rojas Miñan Alexis Luis </h3>
 			<h3> Mamani Acurio Alex Sebastian</h3>
 			<h3> Soto Piñares Nestor Raul</h3>
@@ -101,9 +100,7 @@
                 if (completa === 1) {
                     $("#header").css("display", "none");
                     $("#footer").css("display", "none");
-					$("#panel-animacion").css("margin-top", "300px");
-					$("#elcodigo").css("display", "none");
-					$("#texto").css({"top" : "600px", "left" : "30px"});
+                    $("#panel-animacion").css("margin-top", "300px");
                 }
             }
             else {
@@ -120,9 +117,7 @@
                 if (completa === 0) {
                     $("#header").css("display", "block");
                     $("#footer").css("display", "block");
-					$("#panel-animacion").css("margin-top", "0px");
-					$("#elcodigo").css("display", "block");
-					$("#texto").css({"top" : "700px", "left" : "30px"});
+                    $("#panel-animacion").css("margin-top", "0px");
                 }
             }
         }
